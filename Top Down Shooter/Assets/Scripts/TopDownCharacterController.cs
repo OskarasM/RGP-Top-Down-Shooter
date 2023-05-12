@@ -29,9 +29,6 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float playerMaxSpeed = 100f;
 
     
-    /// <summary>
-    /// When the script first initialises
-    /// </summary>
     private void Awake()
     {
         //Get the attached components so we can use them later
@@ -39,13 +36,9 @@ public class TopDownCharacterController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    /// <summary>
-    /// When a fixed update cycle is called
-    /// </summary>
     private void FixedUpdate()
     {
-        //Set the velocity to the direction they're moving in, multiplied
-        //by the speed they're moving
+        //Set the velocity to the direction they're moving in, multiplied by the speed they're moving
         rb.velocity = playerDirection * (playerSpeed * playerMaxSpeed) * Time.fixedDeltaTime;
     }
 
@@ -70,9 +63,6 @@ public class TopDownCharacterController : MonoBehaviour
         rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }
 
-    /// <summary>
-    /// Called when the player wants to move in a certain direction
-    /// </summary>
     /// <param name="context"></param>
     public void OnPlayerInputMove(InputAction.CallbackContext context)
     {
@@ -87,8 +77,7 @@ public class TopDownCharacterController : MonoBehaviour
             return;
         }
 
-        //Otherwise, if the context wasn't performed, don't run
-        //the code below
+        //Otherwise, if the context wasn't performed, don't run the code below
         if (!context.performed)
             return;
 
